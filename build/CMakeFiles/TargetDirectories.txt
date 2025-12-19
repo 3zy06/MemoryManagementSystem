@@ -1,0 +1,3 @@
+/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/build/CMakeFiles/test.dir
+/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/build/CMakeFiles/edit_cache.dir
+/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/build/CMakeFiles/rebuild_cache.dir
