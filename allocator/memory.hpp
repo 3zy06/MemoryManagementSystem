@@ -37,8 +37,8 @@ struct Memory{
         Block* node = Head;
         while(node != NULL)
         {
-            if(node->Hole) std::cout << "free";
-            else std::cout << "used, id = " << node->Id;
+            if(node->Hole) std::cout << node->StartAddress << " - " << node->StartAddress+node->Size-1 << " free";
+            else std::cout << node->StartAddress << " - " << node->StartAddress+node->Size-1 << " used, id = " << node->Id;
             std::cout << std::endl; 
         
             if(node->NextBlock != NULL) node = node->NextBlock;
@@ -62,10 +62,12 @@ struct Memory{
                     int endAddress = node->StartAddress + node->Size;
                     node->Hole = 0;
                     Block* After = node->NextBlock;
-                    Block* Before = new Block(endAddress, extra, ++Id, 1, After, node);
+                    node->Id = ++Id;
+                    // ++Id;
+                    Block* Before = new Block(endAddress, extra, 0, 1, After, node);
                     node->NextBlock = Before; 
                     found = true;
-                    std::cout << "Allocated block id = " << Id << " at address " << node->StartAddress << std::endl;
+                    std::cout << "Allocated block id = " << node->Id << " at address " << node->StartAddress << std::endl;
                 }
             }
             if(node->NextBlock != NULL) node = node->NextBlock;

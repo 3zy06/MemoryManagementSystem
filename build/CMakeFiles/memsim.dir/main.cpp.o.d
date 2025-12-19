@@ -150,5 +150,10 @@ CMakeFiles/memsim.dir/main.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
  /usr/include/c++/13/bits/istream.tcc \
- /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/allocator.hpp \
- /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/memory.hpp
+ /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/CLI/cli.hpp \
+ /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc \
+ /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/CLI/../allocator/allocator.hpp \
+ /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/CLI/../allocator/memory.hpp
