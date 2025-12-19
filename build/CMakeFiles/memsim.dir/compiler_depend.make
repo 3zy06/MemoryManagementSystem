@@ -3,7 +3,7 @@
 
 CMakeFiles/memsim.dir/main.cpp.o: /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/main.cpp \
   /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/allocator.h \
-  /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/block.h \
+  /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/memory.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -357,13 +357,17 @@ CMakeFiles/memsim.dir/main.cpp.o: /home/suvrat6/Desktop/ProjectsWinter/MemoryMan
 
 /usr/include/wchar.h:
 
-/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/block.h:
-
 /usr/include/alloca.h:
 
 /usr/include/c++/13/bit:
 
 /usr/include/c++/13/bits/basic_string.tcc:
+
+/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/memory.h:
+
+/usr/include/sched.h:
+
+/usr/include/c++/13/string:
 
 /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/allocator.h:
 
@@ -395,8 +399,6 @@ CMakeFiles/memsim.dir/main.cpp.o: /home/suvrat6/Desktop/ProjectsWinter/MemoryMan
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
 
-/usr/include/c++/13/string:
-
 /usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/c++/13/bits/exception_ptr.h:
@@ -405,9 +407,9 @@ CMakeFiles/memsim.dir/main.cpp.o: /home/suvrat6/Desktop/ProjectsWinter/MemoryMan
 
 /usr/include/c++/13/bits/alloc_traits.h:
 
-/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
-
 /usr/include/c++/13/bits/stl_iterator.h:
+
+/usr/include/x86_64-linux-gnu/bits/libc-header-start.h:
 
 /usr/include/c++/13/bits/functexcept.h:
 
@@ -520,8 +522,6 @@ CMakeFiles/memsim.dir/main.cpp.o: /home/suvrat6/Desktop/ProjectsWinter/MemoryMan
 /usr/include/locale.h:
 
 /usr/include/pthread.h:
-
-/usr/include/sched.h:
 
 /usr/include/stdlib.h:
 

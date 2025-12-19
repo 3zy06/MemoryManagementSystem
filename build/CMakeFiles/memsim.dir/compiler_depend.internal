@@ -4,7 +4,7 @@
 CMakeFiles/memsim.dir/main.cpp.o
  /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/main.cpp
  /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/allocator.h
- /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/block.h
+ /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/allocator/memory.h
  /usr/include/alloca.h
  /usr/include/asm-generic/errno-base.h
  /usr/include/asm-generic/errno.h
