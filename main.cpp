@@ -1,7 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
-
+#include <iostream>
+#include "allocator/allocator.h"
 int main()
 {
-    cout << "Hello World" << endl;
+    print();
 }

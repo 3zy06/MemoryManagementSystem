@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "test::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test-Debug-aae5c200e7610d45a092.json",
-					"name" : "test",
+					"id" : "memsim::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-memsim-Debug-a08f3f0ec93e62cecb85.json",
+					"name" : "memsim",
 					"projectIndex" : 0
 				}
 			]

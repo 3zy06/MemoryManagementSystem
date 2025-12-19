@@ -1,8 +1,8 @@
 [
 {
   "directory": "/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/build",
-  "command": "/usr/bin/g++   -g -o CMakeFiles/test.dir/main.cpp.o -c /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/main.cpp",
+  "command": "/usr/bin/g++   -g -o CMakeFiles/memsim.dir/main.cpp.o -c /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/main.cpp",
   "file": "/home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/main.cpp",
-  "output": "CMakeFiles/test.dir/main.cpp.o"
+  "output": "CMakeFiles/memsim.dir/main.cpp.o"
 }
 ]

@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "test"
+			"path" : "memsim"
 		}
 	],
 	"backtrace" : 1,
@@ -45,7 +45,7 @@
 			]
 		}
 	],
-	"id" : "test::@6890427a1f51a3e7e1df",
+	"id" : "memsim::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -61,8 +61,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "test",
-	"nameOnDisk" : "test",
+	"name" : "memsim",
+	"nameOnDisk" : "memsim",
 	"paths" : 
 	{
 		"build" : ".",

@@ -1,4 +1,4 @@
-CMakeFiles/test.dir/main.cpp.o: \
+CMakeFiles/memsim.dir/main.cpp.o: \
  /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/main.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/13/iostream \
  /usr/include/c++/13/bits/requires_hosted.h \
