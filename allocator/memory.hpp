@@ -61,12 +61,14 @@ struct Memory{
                     node->Size = size;
                     int endAddress = node->StartAddress + node->Size;
                     node->Hole = 0;
-                    Block* After = node->NextBlock;
                     node->Id = ++Id;
-                    // ++Id;
-                    Block* Before = new Block(endAddress, extra, 0, 1, After, node);
-                    node->NextBlock = Before; 
                     found = true;
+                    if(extra)
+                    {
+                        Block* After = node->NextBlock;
+                        Block* Before = new Block(endAddress, extra, 0, 1, After, node);
+                        node->NextBlock = Before; 
+                    }
                     std::cout << "Allocated block id = " << node->Id << " at address " << node->StartAddress << std::endl;
                 }
             }
@@ -74,6 +76,39 @@ struct Memory{
             else node = NULL;
         }
         if(!found) std::cout << "Not enough Memory" << std::endl;
+    }
+
+    void Free(int id)
+    {
+        bool found = false;
+        Block* node = Head;
+        while(node != NULL && !found) 
+        {
+            if(!node->Hole)
+            {
+                if(node->Id == id)
+                {
+                    node->Id = 0;
+                    node->Hole = true;
+                    Block* After = node->NextBlock;
+                    Block* Before = node->PrevBlock;
+                    if(After != NULL && After->Hole)
+                    {
+                        node->Size += After->Size;
+                        node->NextBlock = After->NextBlock;
+                    }
+                    if(Before != NULL && Before->Hole)
+                    {
+                        node->Size += Before->Size;
+                        node->StartAddress = Before->StartAddress;
+                        node->PrevBlock = Before->PrevBlock;
+                        if(Before->PrevBlock != NULL) Before->PrevBlock->NextBlock = node;
+                    }
+                }
+            }
+            if(node->NextBlock != NULL) node = node->NextBlock;
+            else node = NULL;
+        }
     }
 };
 

@@ -73,6 +73,18 @@ struct CLI{
                         }
                         // allocate
                     }
+                    if(SplitCommand[0] == "free")
+                    {
+                        try
+                        {
+                            memory->Free(stoi(SplitCommand[1]));
+                        }
+                        catch(const std::exception& e)
+                        {
+                            invalidCommand();
+                            std::cerr << e.what() << '\n';
+                        }
+                    }
                     if(SplitCommand[0] == "dump" && SplitCommand[1] == "memory")
                     {
                         // print memory
