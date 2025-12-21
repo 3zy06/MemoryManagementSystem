@@ -64,7 +64,7 @@ struct CLI{
                     {
                         try
                         {
-                            memory->FirstFit(stoi(SplitCommand[1]));
+                            memory->BestFit(stoi(SplitCommand[1]));
                         }
                         catch(const std::exception& e)
                         {

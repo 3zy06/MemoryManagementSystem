@@ -68,6 +68,7 @@ struct Memory{
                         Block* After = node->NextBlock;
                         Block* Before = new Block(endAddress, extra, 0, 1, After, node);
                         node->NextBlock = Before; 
+                        if(After != NULL) After->PrevBlock = Before;
                     }
                     std::cout << "Allocated block id = " << node->Id << " at address " << node->StartAddress << std::endl;
                 }
@@ -75,7 +76,66 @@ struct Memory{
             if(node->NextBlock != NULL) node = node->NextBlock;
             else node = NULL;
         }
-        if(!found) std::cout << "Not enough Memory" << std::endl;
+        if(!found) 
+        {
+            std::cout << "Not enough Memory" << std::endl;
+            return;
+        }
+
+    }
+
+    void BestFit(int size)
+    {
+
+        bool found = false;
+        Block* node = Head;
+        int best_size = 1e9;
+        while(node != NULL) 
+        {
+            if(node->Hole)
+            {
+                if(node->Size >= size)
+                {
+                    found = true;
+                    if(node->Size < best_size) best_size = node->Size;
+                }
+            }
+            if(node->NextBlock != NULL) node = node->NextBlock;
+            else node = NULL;
+        }
+        if(!found) 
+        {
+            std::cout << "Not enough Memory" << std::endl;
+            return;
+        }
+
+        node = Head;
+        found = false;
+        while(node != NULL && !found) 
+        {
+            if(node->Hole)
+            {
+                if(node->Size == best_size && !found)
+                {
+                    int extra = node->Size - size;
+                    node->Size = size;
+                    int endAddress = node->StartAddress + node->Size;
+                    node->Hole = 0;
+                    node->Id = ++Id;
+                    found = true;
+                    if(extra)
+                    {
+                        Block* After = node->NextBlock;
+                        Block* Before = new Block(endAddress, extra, 0, 1, After, node);
+                        node->NextBlock = Before; 
+                        if(After != NULL) After->PrevBlock = Before;
+                    }
+                    std::cout << "Allocated block id = " << node->Id << " at address " << node->StartAddress << std::endl;
+                }
+            }
+            if(node->NextBlock != NULL) node = node->NextBlock;
+            else node = NULL;
+        }
     }
 
     void Free(int id)
@@ -88,14 +148,18 @@ struct Memory{
             {
                 if(node->Id == id)
                 {
+                    
                     node->Id = 0;
                     node->Hole = true;
                     Block* After = node->NextBlock;
                     Block* Before = node->PrevBlock;
+                    if(Before != NULL) std::cout << "Before add " << Before->StartAddress << std::endl;
+                    if(Before != NULL) std::cout << "After add " << After->StartAddress << std::endl;
                     if(After != NULL && After->Hole)
                     {
                         node->Size += After->Size;
                         node->NextBlock = After->NextBlock;
+                        if(After->NextBlock != NULL) After->NextBlock->PrevBlock = node;
                     }
                     if(Before != NULL && Before->Hole)
                     {
