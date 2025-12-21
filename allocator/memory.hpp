@@ -138,6 +138,60 @@ struct Memory{
         }
     }
 
+    void WorstFit(int size)
+    {
+
+        bool found = false;
+        Block* node = Head;
+        int best_size = 0;
+        while(node != NULL) 
+        {
+            if(node->Hole)
+            {
+                if(node->Size >= size)
+                {
+                    found = true;
+                    if(node->Size > best_size) best_size = node->Size;
+                }
+            }
+            if(node->NextBlock != NULL) node = node->NextBlock;
+            else node = NULL;
+        }
+        if(!found) 
+        {
+            std::cout << "Not enough Memory" << std::endl;
+            return;
+        }
+
+        node = Head;
+        found = false;
+        while(node != NULL && !found) 
+        {
+            if(node->Hole)
+            {
+                if(node->Size == best_size && !found)
+                {
+                    int extra = node->Size - size;
+                    node->Size = size;
+                    int endAddress = node->StartAddress + node->Size;
+                    node->Hole = 0;
+                    node->Id = ++Id;
+                    found = true;
+                    if(extra)
+                    {
+                        Block* After = node->NextBlock;
+                        Block* Before = new Block(endAddress, extra, 0, 1, After, node);
+                        node->NextBlock = Before; 
+                        if(After != NULL) After->PrevBlock = Before;
+                    }
+                    std::cout << "Allocated block id = " << node->Id << " at address " << node->StartAddress << std::endl;
+                }
+            }
+            if(node->NextBlock != NULL) node = node->NextBlock;
+            else node = NULL;
+        }
+    }
+
     void Free(int id)
     {
         bool found = false;
@@ -153,8 +207,6 @@ struct Memory{
                     node->Hole = true;
                     Block* After = node->NextBlock;
                     Block* Before = node->PrevBlock;
-                    if(Before != NULL) std::cout << "Before add " << Before->StartAddress << std::endl;
-                    if(Before != NULL) std::cout << "After add " << After->StartAddress << std::endl;
                     if(After != NULL && After->Hole)
                     {
                         node->Size += After->Size;
@@ -173,6 +225,32 @@ struct Memory{
             if(node->NextBlock != NULL) node = node->NextBlock;
             else node = NULL;
         }
+    }
+
+    void Stats()
+    {
+        int total_free = 0;
+        int largest_free = 0;
+        int total_memory = 0;
+        Block* node = Head;
+        while(node != NULL)
+        {
+            if(node->Hole) 
+            {
+                total_free += node->Size;
+                if(node->Size > largest_free) largest_free = node->Size;
+            }
+            total_memory += node->Size;
+            if(node->NextBlock != NULL) node = node->NextBlock;
+            else node = NULL;
+        }
+        std::cout << "Total Memory " << total_memory << std::endl;
+        std::cout << "Used Memory " << total_memory - total_free << std::endl;
+        std::cout << "Free Memory " << total_free << std::endl;
+        std::cout << "External Fragmentation " << (1 - (1.0*largest_free / total_free))*100.0 << std::endl;
+
+
+
     }
 };
 
