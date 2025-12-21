@@ -155,5 +155,4 @@ CMakeFiles/memsim.dir/main.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/CLI/../allocator/allocator.hpp \
  /home/suvrat6/Desktop/ProjectsWinter/MemoryManagementSystem/CLI/../allocator/memory.hpp

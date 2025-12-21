@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../allocator/allocator.hpp"
+#include "../allocator/memory.hpp"
 struct CLI{
     bool running;
 
