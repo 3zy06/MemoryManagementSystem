@@ -43,7 +43,6 @@ struct CacheLevel{
 
         memory = mem;
 
-        std::cout << "here \n";
     }
 
     void insert(int address)
