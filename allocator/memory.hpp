@@ -254,5 +254,5 @@ struct Memory{
 
 void print()
 {
-    std::cout << "Hello WOrld" << std::endl;
+    std::cout << "Hello World" << std::endl;
 }
