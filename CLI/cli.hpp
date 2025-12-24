@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "../allocator/memory.hpp"
+#include <string>
+#include "../allocator/cache.hpp"
+
 struct CLI{
     bool running;
 
@@ -26,6 +28,8 @@ struct CLI{
     {
         std::string command;
         Memory* memory = NULL;
+        CacheLevel* level1 = NULL;
+        CacheLevel* level2 = NULL;
 
         std::cout << "> ";
         int Allocator = 1;
@@ -40,7 +44,6 @@ struct CLI{
             {
                 std::vector<std::string> SplitCommand = split(command);
             
-                
                 if(SplitCommand[0] == "init" && SplitCommand[1] == "memory")
                 {
                     memory = new Memory(stoi(SplitCommand[2]));
@@ -69,10 +72,85 @@ struct CLI{
                 {
                     memory->Stats();
                 }
-            
+                if(SplitCommand[0] == "init" && SplitCommand[1] == "cache")
+                {
+                    std::string buffer; 
+
+                    if(SplitCommand[2] == "1")
+                    {
+                        int size;
+                        int blocksize;
+                        int associativity;
+
+                        std::cout << "Cache Size?" << std::endl;
+                        std::getline(std::cin, buffer);
+                        size = std::stoi(buffer);
+
+                        std::cout << "Block Size?" << std::endl;
+                        std::getline(std::cin, buffer);
+                        blocksize = std::stoi(buffer);
+
+                        std::cout << "Associativity?" << std::endl;
+                        std::getline(std::cin, buffer);
+                        associativity = std::stoi(buffer); 
+
+                        level1 = new CacheLevel(size, blocksize, associativity, memory);
+                    
+                    }
+                    if(SplitCommand[2] == "2")
+                    {
+                        int size;
+                        int blocksize;
+                        int associativity;
+
+                        std::cout << "Cache Size?" << std::endl;
+                        std::getline(std::cin, buffer);
+                        size = std::stoi(buffer);
+
+                        std::cout << "Block Size?" << std::endl;
+                        std::getline(std::cin, buffer);
+                        blocksize = std::stoi(buffer);
+
+                        std::cout << "Associativity?" << std::endl;
+                        std::getline(std::cin, buffer);
+                        associativity = std::stoi(buffer); 
+
+                        level2 = new CacheLevel(size, blocksize, associativity, memory);
+                    }
+                }
+                if(SplitCommand[0] == "read")
+                {
+                    int addr = stoi(SplitCommand[1]);
+
+                    if(level1 != NULL) 
+                    {
+                        if(level1->read(addr)) std::cout << "Found in level 1 cache" << std::endl;
+                        else
+                        {
+                            if(level2 != NULL)
+                            {
+                                if(level2 -> read(addr))
+                                {
+                                    std::cout << "Found in level 2 cache" << std::endl;
+                                    level1->insert(addr);
+                                    
+                                }
+                                else
+                                {
+                                    std::cout << "Found in memory" << std::endl;
+                                    level2->insert(addr);
+                                }
+                            }
+                            else
+                            {
+                                std::cout << "Found in memory" << std::endl;
+                                level1->insert(addr);
+                            }
+                        } 
+                    }
+                }
             }
             std::cout << "> ";
-            
         }
     }
 };

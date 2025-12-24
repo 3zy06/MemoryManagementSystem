@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 struct Block{
     int StartAddress;
     int Size;
@@ -28,7 +27,6 @@ struct Memory{
     {
         Id = 0;
         Head = new Block(0, size, 1, 1, NULL, NULL);
-
         std::cout << "Created memory of Size " << size << std::endl;
     }
 
@@ -249,9 +247,9 @@ struct Memory{
         std::cout << "Free Memory " << total_free << std::endl;
         std::cout << "External Fragmentation " << (1 - (1.0*largest_free / total_free))*100.0 << std::endl;
 
-
-
     }
+
+
 };
 
 void print()
