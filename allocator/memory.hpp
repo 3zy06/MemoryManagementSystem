@@ -210,6 +210,8 @@ struct Memory{
                         node->Size += After->Size;
                         node->NextBlock = After->NextBlock;
                         if(After->NextBlock != NULL) After->NextBlock->PrevBlock = node;
+
+                        delete After;
                     }
                     if(Before != NULL && Before->Hole)
                     {
@@ -217,6 +219,9 @@ struct Memory{
                         node->StartAddress = Before->StartAddress;
                         node->PrevBlock = Before->PrevBlock;
                         if(Before->PrevBlock != NULL) Before->PrevBlock->NextBlock = node;
+                        if (Before == Head) Head = node;
+
+                        delete Before;
                     }
                 }
             }
@@ -245,8 +250,8 @@ struct Memory{
         std::cout << "Total Memory " << total_memory << std::endl;
         std::cout << "Used Memory " << total_memory - total_free << std::endl;
         std::cout << "Free Memory " << total_free << std::endl;
-        std::cout << "External Fragmentation " << (1 - (1.0*largest_free / total_free))*100.0 << std::endl;
-
+        if(total_free != 0) std::cout << "External Fragmentation " << (1 - (1.0*largest_free / total_free))*100.0 << std::endl;
+        else std::cout << "External Fragmentation " << 0 << std::endl;
     }
 
 

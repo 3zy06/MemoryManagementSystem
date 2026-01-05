@@ -5,7 +5,7 @@
 #include <cmath>
 #include <bitset>
 #include <deque>
-
+#include <iomanip>
 
 struct CacheLine{
     int Tag;
@@ -28,6 +28,9 @@ struct CacheLevel{
     int index_bits;
     int num_sets;
 
+    int Hits;
+    int Misses;
+
     std::vector <std::deque<CacheLine>> Cache;
 
     CacheLevel(int size, int blocksize, int associativity, Memory* mem)
@@ -43,6 +46,9 @@ struct CacheLevel{
 
         memory = mem;
 
+        Hits = 0;
+        Misses = 0;
+
     }
 
     void insert(int address)
@@ -52,11 +58,17 @@ struct CacheLevel{
         int index  = (address >> offset_bits) & ((1 << index_bits) - 1);
         int tag    = address >> (offset_bits + index_bits);
 
+        for(auto cl: Cache[index])
+        {
+            if(cl.Tag == tag) return; 
+        }
+
         if(Cache[index].size() == Associativity)
         {
             CacheLine evicted = Cache[index].back();
             Cache[index].pop_back();
         }
+
 
         CacheLine CL(tag, 0);
         Cache[index].push_front(CL);
@@ -74,11 +86,28 @@ struct CacheLevel{
 
         for(auto cl: Cache[index])
         {
-            if(cl.Tag == tag) return true;
+            if(cl.Tag == tag) 
+            {
+                Hits++;
+                return true;
+            }
         }
+
+        Misses++;
 
         return false;
 
+    }
+
+    void printStats(int id)
+    {
+        int total_accesses = Hits + Misses;
+        double hit_ratio = (total_accesses > 0) ? (double)Hits / total_accesses : 0.0;
+
+        std::cout << "Level " << id << " Cache Stats" << std::endl;
+        std::cout << "Hits: " << Hits << std::endl;
+        std::cout << "Misses: " << Misses << std::endl;
+        std::cout << "Hit Ratio: " << std::fixed << std::setprecision(2) << hit_ratio * 100.0 << "%" << std::endl;
     }
 
 

@@ -71,6 +71,9 @@ struct CLI{
                 if(SplitCommand[0] == "stats")
                 {
                     memory->Stats();
+
+                    if(level1 != NULL) level1->printStats(1);
+                    if(level2 != NULL) level2->printStats(2);
                 }
                 if(SplitCommand[0] == "init" && SplitCommand[1] == "cache")
                 {
@@ -124,21 +127,25 @@ struct CLI{
 
                     if(level1 != NULL) 
                     {
-                        if(level1->read(addr)) std::cout << "Found in level 1 cache" << std::endl;
+                        if(level1->read(addr)) 
+                        {
+                            std::cout << "Found in level 1 cache" << std::endl;
+                        }
                         else
                         {
                             if(level2 != NULL)
                             {
-                                if(level2 -> read(addr))
+                                if(level2->read(addr))
                                 {
                                     std::cout << "Found in level 2 cache" << std::endl;
                                     level1->insert(addr);
-                                    
                                 }
                                 else
                                 {
                                     std::cout << "Found in memory" << std::endl;
+                                    
                                     level2->insert(addr);
+                                    level1->insert(addr); 
                                 }
                             }
                             else
