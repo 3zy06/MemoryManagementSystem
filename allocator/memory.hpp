@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 
 struct Block{
     int StartAddress;
@@ -23,11 +24,17 @@ struct Memory{
     Block* Head;
     int Id;
 
+    int total_allocations;
+    int failed_allocations;
+
     Memory(int size)
     {
         Id = 0;
         Head = new Block(0, size, 1, 1, NULL, NULL);
         std::cout << "Created memory of Size " << size << std::endl;
+    
+        int total_allocations = 0;
+        int failed_allocations = 0;
     }
 
     void printMemory()
@@ -76,9 +83,12 @@ struct Memory{
         }
         if(!found) 
         {
+            failed_allocations++;
             std::cout << "Not enough Memory" << std::endl;
             return;
         }
+
+        total_allocations++;
 
     }
 
@@ -103,9 +113,12 @@ struct Memory{
         }
         if(!found) 
         {
+            failed_allocations++;
             std::cout << "Not enough Memory" << std::endl;
             return;
         }
+
+        total_allocations++;
 
         node = Head;
         found = false;
@@ -157,9 +170,12 @@ struct Memory{
         }
         if(!found) 
         {
+            failed_allocations++;
             std::cout << "Not enough Memory" << std::endl;
             return;
         }
+
+        total_allocations++;
 
         node = Head;
         found = false;
@@ -247,11 +263,18 @@ struct Memory{
             if(node->NextBlock != NULL) node = node->NextBlock;
             else node = NULL;
         }
+        int used_memory = total_memory - total_free;
+        int total_requests = total_allocations + failed_allocations;
+        double utilization = (total_memory > 0) ? ((double)used_memory / total_memory) * 100.0 : 0.0;
+        double success_rate = (total_requests > 0) ? ((double)total_allocations / total_requests) * 100.0 : 0.0;
         std::cout << "Total Memory " << total_memory << std::endl;
         std::cout << "Used Memory " << total_memory - total_free << std::endl;
         std::cout << "Free Memory " << total_free << std::endl;
         if(total_free != 0) std::cout << "External Fragmentation " << (1 - (1.0*largest_free / total_free))*100.0 << std::endl;
         else std::cout << "External Fragmentation " << 0 << std::endl;
+
+        std::cout << "Memory Utilization: " << std::fixed << std::setprecision(2) << utilization << "%" << std::endl;
+        std::cout << "Allocation Success Rate: " << std::fixed << std::setprecision(2) << success_rate << "% (" << total_allocations << "/" << total_requests << ")" << std::endl;
     }
 
 
