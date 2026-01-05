@@ -33,8 +33,8 @@ struct Memory{
         Head = new Block(0, size, 1, 1, NULL, NULL);
         std::cout << "Created memory of Size " << size << std::endl;
     
-        int total_allocations = 0;
-        int failed_allocations = 0;
+        total_allocations = 0;
+        failed_allocations = 0;
     }
 
     void printMemory()
