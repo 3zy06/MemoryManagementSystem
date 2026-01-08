@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include "../allocator/cache.hpp"
+#include "../Cache/cache.hpp"
 
 struct CLI{
     bool running;

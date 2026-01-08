@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
-#include "memory.hpp"
+#include "../Memory/memory.hpp"
 #include <cmath>
 #include <bitset>
 #include <deque>
