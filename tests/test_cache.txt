@@ -1,0 +1,16 @@
+init memory 1024
+init cache 1 
+32
+16
+2
+init cache 2 
+64
+16
+4
+read 0
+read 16
+read 0
+read 32
+read 0
+stats
+exit

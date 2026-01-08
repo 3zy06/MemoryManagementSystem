@@ -1,0 +1,24 @@
+Hello World
+> Created memory of Size 2048
+> Allocated block id = 1 at address 0
+> Allocated block id = 2 at address 500
+> Allocated block id = 3 at address 800
+> Allocated block id = 4 at address 1300
+> > > 0 - 499 used, id = 1
+500 - 799 free
+800 - 1299 used, id = 3
+1300 - 2047 free
+> > Allocated block id = 5 at address 500
+> 0 - 499 used, id = 1
+500 - 749 used, id = 5
+750 - 799 free
+800 - 1299 used, id = 3
+1300 - 2047 free
+> > Allocated block id = 6 at address 1300
+> 0 - 499 used, id = 1
+500 - 749 used, id = 5
+750 - 799 free
+800 - 1299 used, id = 3
+1300 - 1549 used, id = 6
+1550 - 2047 free
+> Exiting...

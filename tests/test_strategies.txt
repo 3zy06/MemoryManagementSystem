@@ -1,0 +1,15 @@
+init memory 2048
+malloc 500
+malloc 300
+malloc 500
+malloc 500
+free 2
+free 4
+dump memory
+set allocator best_fit
+malloc 250
+dump memory
+set allocator worst_fit
+malloc 250
+dump memory
+exit

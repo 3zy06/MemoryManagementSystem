@@ -1,0 +1,28 @@
+Hello World
+> Created memory of Size 1024
+> > Allocated block id = 1 at address 0
+> Allocated block id = 2 at address 100
+> Allocated block id = 3 at address 200
+> Allocated block id = 4 at address 300
+> > 0 - 99 used, id = 1
+100 - 199 free
+200 - 299 used, id = 3
+300 - 399 used, id = 4
+400 - 1023 free
+> > 0 - 99 used, id = 1
+100 - 299 free
+300 - 399 used, id = 4
+400 - 1023 free
+> Allocated block id = 5 at address 100
+> 0 - 99 used, id = 1
+100 - 249 used, id = 5
+250 - 299 free
+300 - 399 used, id = 4
+400 - 1023 free
+> Total Memory 1024
+Used Memory 350
+Free Memory 674
+External Fragmentation 7.4184
+Memory Utilization: 34.18%
+Allocation Success Rate: 100.00% (5/5)
+> Exiting...

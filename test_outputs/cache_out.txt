@@ -1,0 +1,28 @@
+Hello World
+> Created memory of Size 1024
+> Cache Size?
+Block Size?
+Associativity?
+> Cache Size?
+Block Size?
+Associativity?
+> Found in memory
+> Found in memory
+> Found in level 1 cache
+> Found in memory
+> Found in level 2 cache
+> Total Memory 1024
+Used Memory 0
+Free Memory 1024
+External Fragmentation 0
+Memory Utilization: 0.00%
+Allocation Success Rate: 0.00% (0/0)
+Level 1 Cache Stats
+Hits: 1
+Misses: 4
+Hit Ratio: 20.00%
+Level 2 Cache Stats
+Hits: 1
+Misses: 3
+Hit Ratio: 25.00%
+> Exiting...
