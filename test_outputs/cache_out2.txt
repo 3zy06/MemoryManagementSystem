@@ -8,11 +8,11 @@ Block Size?
 Associativity?
 > Found in memory
 > Found in memory
-> Found in level 1 cache
-> Found in level 1 cache
-> Found in level 1 cache
+> Found in memory
 > Found in memory
 > Found in level 2 cache
+> Found in memory
+> Found in memory
 > Total Memory 1024
 Used Memory 0
 Free Memory 1024
@@ -20,11 +20,11 @@ External Fragmentation 0
 Memory Utilization: 0.00%
 Allocation Success Rate: 0.00% (0/0)
 Level 1 Cache Stats
-Hits: 3
-Misses: 4
-Hit Ratio: 42.86%
+Hits: 0
+Misses: 7
+Hit Ratio: 0.00%
 Level 2 Cache Stats
 Hits: 1
-Misses: 3
-Hit Ratio: 25.00%
+Misses: 6
+Hit Ratio: 14.29%
 > Exiting...

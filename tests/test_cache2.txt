@@ -9,10 +9,10 @@ init cache 2
 4
 read 0
 read 16
-read 0
-read 15
-read 23
-read 107
+read 32
+read 48
+read 16
+read 64
 read 0
 stats
 exit

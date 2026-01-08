@@ -28,3 +28,7 @@ echo "Done. Check test_outputs/strategies_out.txt"
 echo "Running Cache Test..."
 $EXE < tests/test_cache.txt > test_outputs/cache_out.txt
 echo "Done. Check test_outputs/cache_out.txt"
+
+echo "Running Cache Test 2..."
+$EXE < tests/test_cache2.txt > test_outputs/cache_out2.txt
+echo "Done. Check test_outputs/cache_out.txt"
